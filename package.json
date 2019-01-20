@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node ./src/server.ts",
+    "dev": "nodemon --exec ts-node -- ./src/server.ts",
     "start": "nodemon ./dist/server.js"
   },
   "keywords": [],
