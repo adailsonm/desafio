@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { CustomerContact } from "./routes/CustomerContact";
-
+import * as moment from 'moment';
 class App {
     
     public app: express.Application;
@@ -11,6 +11,7 @@ class App {
         this.app = express();
         this.config();
         this.customerRoutes.routes(this.app);
+        moment.defineLocale('pt-BR',null);
     }
 
     private config(): void {

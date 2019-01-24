@@ -11,12 +11,14 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/node": "^10.12.18",
     "nodemon": "^1.18.9",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.4"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "moment": "^2.24.0"
   }
 }
