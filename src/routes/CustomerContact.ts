@@ -55,12 +55,7 @@ export class CustomerContact {
                 const atendimento = db.atendimentos.filter(atendimento => 
                     moment(atendimento.day, 'DD-MM-YYYY').toDate() >= formattedDayIn  && moment(atendimento.day, 'DD-MM-YYYY').toDate() <= formattedDayFin || 
                     atendimento.recurrence === 'Diariamente' || atendimento.weekDay.findIndex(someDay => someDay.weekDay == week[dayWeekIn] || someDay.weekDay == week[dayWeekFin]))
-<<<<<<< HEAD
-                   res.status(200).send(atendimento);
-=======
-                console.log(atendimento);
                     res.status(200).send(atendimento);
->>>>>>> 5abcf4cf96d8529e5f87f5cd89ab5e9ed2490f6f
             })
         /* 
         Route opcional criada com pensando que seria necessaria... 
