@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "es6",     //Versão do Javascript a ser transpilada pelo typescript
+      "module": "commonjs", // Módulo de estilo CommonJS na saida
+      "outDir": "dist"  ,   // altera diretório de saida
+      "resolveJsonModule": true  //Importar banco de dados json 
+    },
+    "include": [
+      "src/**/*.ts"   //Arquivo que vai ser compilado
+    ],
+    "exclude": [
+      "node_modules" // quais arquivos ou diretórios ignorar
+    ]
+ }
