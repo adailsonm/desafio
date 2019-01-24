@@ -38,9 +38,7 @@ export class CustomerContact {
                 const daySplitIn = intervalDayIn.split('-').reverse();
                 const daySplitFin = intervalDayFin.split('-').reverse();
                 const formattedDayIn = new Date(daySplitIn);
-                console.log(formattedDayIn);
                 const formattedDayFin = new Date(daySplitFin);
-                console.log(formattedDayFin);
                 const dayWeekIn = formattedDayIn.getDay();
                 const dayWeekFin = formattedDayFin.getDay();
 
@@ -103,6 +101,7 @@ export class CustomerContact {
             } else if (data.day == '' && data.weekDay.length) {
                 data.recurrence = 'Semanal';
                 data.day = null
+                data.weekDay = [];
             }
             const dayExist = db.atendimentos.filter(atendimento => atendimento.day === body.day);
             if(data.day.length && dayExist.length) {
@@ -137,10 +136,10 @@ export class CustomerContact {
             }
         })
 
-        app.route('/atendimento/:recurrence')
+        app.route('/atendimento/remover/:recurrence')
         .delete((req: Request, res: Response) => {
             const recurrence = req.params.recurrence;
-            if(recurrence !== 'Específico') {
+            if(recurrence !== 'Específico' || recurrence !== 'especifico') {
                 const Data = db.atendimentos.filter(recurrenceFilter => recurrenceFilter.recurrence !== recurrence);
                 const newArray = {
                     atendimentos: Data
