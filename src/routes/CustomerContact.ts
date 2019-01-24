@@ -55,6 +55,7 @@ export class CustomerContact {
                 const atendimento = db.atendimentos.filter(atendimento => 
                     moment(atendimento.day, 'DD-MM-YYYY').toDate() >= formattedDayIn  && moment(atendimento.day, 'DD-MM-YYYY').toDate() <= formattedDayFin || 
                     atendimento.recurrence === 'Diariamente' || atendimento.weekDay.findIndex(someDay => someDay.weekDay == week[dayWeekIn] || someDay.weekDay == week[dayWeekFin]))
+                console.log(atendimento);
                     res.status(200).send(atendimento);
             })
         /* 
@@ -94,15 +95,18 @@ export class CustomerContact {
                 weekDay: body.weekDay,
             }
 
-            if(data.day.length && data.weekDay == '') {
+            if(data.day !== '' && data.weekDay == '') {
                 data.recurrence = 'Específico';
                 data.weekDay = []; 
-            } else if (data.day == '' && data.weekDay.length) {
+            } else if (data.day == '' && data.weekDay) {
                 data.recurrence = 'Semanal';
                 data.day = null
+            } else if (data.day == '') {
+                data.recurrence = 'Diariamente';
+                data.weekDay = [];
             }
             const dayExist = db.atendimentos.filter(atendimento => atendimento.day === body.day);
-            if(data.day.length && dayExist.length) {
+            if(dayExist.length) {
 
                 dayExist.forEach(element => {
                     element.intervals.push(...body.intervals);
